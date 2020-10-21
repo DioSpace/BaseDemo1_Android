@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
                     Object obj = c.newInstance();
                     Method method = c.getMethod(info.getFunc_name(), Activity.class);
                     Object result = method.invoke(obj, MainActivity.this);
-                    assert result != null;
-                    show_board.setText(result.toString());
+                    if (result != null) {
+                        show_board.setText(result.toString());
+                    }
                 } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
