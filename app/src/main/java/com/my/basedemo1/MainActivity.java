@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -81,13 +82,14 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("position : " + position + " id : " + id);
                 List<List_info> list_info = jsonRootBean.getList_info();
                 List_info info = list_info.get(position - 1);
-                show_board.setText(info.getFunc_name());
                 //获取Class对象
                 try {
                     Class c = Class.forName("com.my.basedemo1.Handle");
                     Object obj = c.newInstance();
-                    Method method = c.getMethod(info.getFunc_name(), null);
-                    method.invoke(obj);
+                    Method method = c.getMethod(info.getFunc_name(), Activity.class);
+                    Object result = method.invoke(obj, MainActivity.this);
+                    assert result != null;
+                    show_board.setText(result.toString());
                 } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
                     e.printStackTrace();
                 }

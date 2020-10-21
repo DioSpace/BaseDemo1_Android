@@ -1,25 +1,29 @@
 package com.my.basedemo1;
 
+import android.app.Activity;
+import android.widget.Toast;
+
 public class Handle {
 
-    public void func_1() {
-        System.out.println("==== func1 ====");
+    public String func_1(Activity activity) {
+        Toast.makeText(activity, "Show Tip", Toast.LENGTH_SHORT).show();
+        return "==== func1 ====";
     }
 
-    public void func_2() {
-        System.out.println("==== func2 ====");
+    public String func_2(Activity activity) {
+        return "==== func2 ====";
     }
 
-    public void func_3() {
-        System.out.println("==== func3 ====");
+    public String func_3(Activity activity) {
+        return "==== func3 ====";
     }
 
-    public void func_4() {
-        System.out.println("==== func4 ====");
+    public String func_4(Activity activity) {
+        return "==== func4 ====";
     }
 
-    public void add() {
-        System.out.println("==== add ====");
+    public String add(Activity activity) {
+        return "==== add ====";
     }
 
 }
